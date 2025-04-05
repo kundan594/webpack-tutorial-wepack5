@@ -1,5 +1,5 @@
 const path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const {CleanWebpackPlugin}= require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -13,7 +13,11 @@ module.exports = {
     devServer: {
         contentBase: path.resolve(__dirname, './dist'),
         index: 'index.html',
-        port: 9000
+        port: 9000,
+        watchContentBase: false,
+        watchOptions: {
+            ignored: ['C:/DumpStack.log.tmp', '**/node_modules/**', '**/C:/**'] // Ignore problematic paths
+        }
     },
     module: {
         rules: [
